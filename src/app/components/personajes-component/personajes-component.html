@@ -1,0 +1,14 @@
+<div class="container my-4">
+  <div class="row g-4">
+    @for (personaje of arraypersonajes; track personaje.idPersonaje) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img [src]="personaje.imagen" class="card-img-top" [alt]="personaje.nombre">
+          <div class="card-body">
+            <h5 class="card-title">{{ personaje.nombre }}</h5>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
