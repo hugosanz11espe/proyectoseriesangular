@@ -1,0 +1,47 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-success text-white text-center rounded-top-4 py-3">
+          <h1 class="h3 mb-0">Update personaje</h1>
+        </div>
+
+        <div class="card-body p-4">
+          <form #form="ngForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Id personaje:</label>
+              <select name="cajaidpersonaje" #cajaidpersonaje class="form-select form-select-lg">
+                @for(personaje of arraypersonajes; track personaje) {
+                  <option value="{{personaje.idPersonaje}}">
+                    {{personaje.nombre}}
+                  </option>
+                }
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Nueva serie:</label>
+              <select name="cajaidserie" #cajaidserie class="form-select form-select-lg">
+                @for(serie of arrayseries; track serie) {
+                  <option value="{{serie.idSerie}}">
+                    {{serie.nombre}}
+                  </option>
+                }
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button (click)="modificarPersonaje()" class="btn btn-success btn-lg fw-semibold">
+                Modificar
+              </button>
+            </div>
+          </form>
+
+          <h3 class="h5 text-center mt-4 mb-0" style="color: brown;">{{mensaje}}</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -9,12 +9,23 @@ import { provideHttpClient } from '@angular/common/http';
 import { ServiceSeries } from './services/service.series';
 import { SerieComponent } from './components/serie-component/serie-component';
 import { PersonajesComponent } from './components/personajes-component/personajes-component';
-
+import { UpdatePersonajeComponent } from './components/update-personaje-component/update-personaje-component';
+import { CreatePersonajeComponent } from './components/create-personaje-component/create-personaje-component';
+import { CreateSerieComponent } from './components/create-serie-component/create-serie-component';
 
 @NgModule({
-  declarations: [App, MenuComponent, HomeComponent, SerieComponent, PersonajesComponent],
+  declarations: [
+    App,
+    MenuComponent,
+    HomeComponent,
+    SerieComponent,
+    PersonajesComponent,
+    UpdatePersonajeComponent,
+    CreatePersonajeComponent,
+    CreateSerieComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), ServiceSeries, ],
+  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), ServiceSeries],
   bootstrap: [App],
 })
 export class AppModule {}

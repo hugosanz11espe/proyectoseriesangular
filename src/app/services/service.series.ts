@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Serie } from "../models/serie";
 import { environment } from "../../environments/environment.development";
@@ -23,7 +23,7 @@ export class ServiceSeries {
   }
 
 
-  async getPeronajesAsync(idserie: number): Promise<Personaje[]>{
+  async getPeronajesSerieAsync(idserie: number): Promise<Personaje[]>{
     let request = "api/series/personajesserie/" + idserie
     let url = environment.apiejemplos + request;
     return firstValueFrom(
@@ -42,4 +42,37 @@ export class ServiceSeries {
 
   }
 
+  async getPersonajesAsync(): Promise<Personaje[]> {
+    let request = "api/personajes/"
+    let url = environment.apiejemplos + request;
+    return firstValueFrom(
+        this._http.get<Personaje[]>(url)
+    )
+  }
+
+
+
+  async cambiarPersonaje(idpersonaje: number, idserie: number): Promise<any> {
+    let request = "api/personajes/updatepersonajeserie/update/" 
+    + idpersonaje + "/" + idserie
+    let url = environment.apiejemplos + request
+    return firstValueFrom(
+      this._http.put(url, null)
+    )
+  }
+  async insertarPersonaje(personaje: Personaje): Promise<any> {
+    let request = "api/personajes"
+    let url = environment.apiejemplos + request
+    let header = new HttpHeaders().set("content-type", "application/json")
+    return firstValueFrom(
+      this._http.post(url, personaje, {headers: header})
+    )
+  }
+  async insertarSerie(serie: Serie): Promise<any> {
+    let request = "api/series/insertarserie/create";
+    let url = environment.apiejemplos + request;
+    return firstValueFrom(
+        this._http.post(url, serie)
+    );
+}
 }

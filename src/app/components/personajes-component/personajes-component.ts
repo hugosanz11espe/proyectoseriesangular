@@ -23,7 +23,7 @@ export class PersonajesComponent implements OnInit{
   async ngOnInit(): Promise<void> {
     this._active.params.subscribe(async(params: Params) =>{
     let idserie = params['idserie'];
-    this.arraypersonajes = await this._service.getPeronajesAsync(idserie);
+    this.arraypersonajes = await this._service.getPeronajesSerieAsync(idserie);
     this._cdr.detectChanges();
     })
   }
